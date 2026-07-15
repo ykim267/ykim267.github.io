@@ -1,0 +1,92 @@
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #333;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+h1 { font-size: 1.8rem; margin: 0; }
+h1 a { color: inherit; text-decoration: none; }
+
+h2 {
+    font-size: 1.35rem;
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+h3 { margin-bottom: 5px; }
+
+nav a {
+    text-decoration: none;
+    color: #555;
+    margin-left: 15px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+nav a:hover { color: #d35400; }
+nav a.active { color: #d35400; }
+
+.container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 45px;
+}
+
+.pic { flex: 0 0 250px; }
+.pic img { width: 100%; border-radius: 4px; }
+
+.bio { flex: 1; min-width: 300px; }
+.bio p { margin-bottom: 15px; text-align: justify; }
+
+.accent { color: #d35400; text-decoration: none; font-weight: 500; }
+.accent:hover { text-decoration: underline; }
+
+.section { margin-top: 45px; padding-top: 15px; }
+
+.card {
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #eee;
+}
+.card:last-child { border-bottom: none; }
+
+.meta { color: #666; font-size: 0.95rem; margin-top: 0; }
+
+.button {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 10px;
+    border: 1px solid #d35400;
+    border-radius: 4px;
+    color: #d35400;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.button:hover { background: #d35400; color: #fff; }
+.button.disabled { border-color: #aaa; color: #777; cursor: default; }
+.button.disabled:hover { background: none; color: #777; }
+
+@media (max-width: 650px) {
+    nav a { display: inline-block; margin-left: 0; margin-right: 12px; margin-bottom: 6px; }
+    .pic { flex: 0 0 100%; max-width: 250px; }
+}
