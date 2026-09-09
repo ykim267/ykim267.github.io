@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="Youngbin (Ben) Kim, Ph.D. candidate in Political Science at UC Merced. Historical trauma, victimhood narratives, and political behavior.">
     <title>Youngbin (Ben) Kim</title>
-        <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KBWY324KC5"></script>
     <script>
@@ -13,32 +16,296 @@
       gtag('js', new Date());
       gtag('config', 'G-KBWY324KC5');
     </script>
+    <style>
+        :root {
+            --bg: #F5F6F4;
+            --surface: #FFFFFF;
+            --ink: #1E2429;
+            --ink-2: #566068;
+            --line: #D9DDD8;
+            --accent: #1F5F7A;
+            --accent-soft: #E3EEF3;
+        }
+        [data-theme="dark"] {
+            --bg: #161A1E;
+            --surface: #1F2429;
+            --ink: #E8EAEC;
+            --ink-2: #A1A9B0;
+            --line: #2F363C;
+            --accent: #7CB8D0;
+            --accent-soft: #223540;
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: "Source Serif 4", Georgia, serif;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover, a:focus-visible { text-decoration: underline; }
+        :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+        /* nav */
+        .nav {
+            position: sticky; top: 0; z-index: 10;
+            background: var(--bg);
+            border-bottom: 1px solid var(--line);
+            font-family: "IBM Plex Sans", system-ui, sans-serif;
+            font-size: 15px;
+        }
+        .nav-inner {
+            max-width: 960px; margin: 0 auto; padding: 14px 24px;
+            display: flex; align-items: center; justify-content: space-between; gap: 16px;
+        }
+        .brand { color: var(--ink); font-weight: 500; }
+        .links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+        .links a { color: var(--ink-2); }
+        .links a:hover { color: var(--ink); text-decoration: none; }
+        .toggle {
+            border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+            border-radius: 999px; padding: 6px 12px; cursor: pointer; font: inherit;
+        }
+
+        /* layout */
+        .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+        section { padding: 64px 0; border-bottom: 1px solid var(--line); }
+        section:last-of-type { border-bottom: none; }
+        h2 {
+            font-size: 28px; font-weight: 600; margin: 0 0 28px;
+        }
+        h3 { font-size: 20px; font-weight: 600; margin: 0 0 6px; }
+        .meta {
+            font-family: "IBM Plex Sans", system-ui, sans-serif;
+            font-size: 15px; color: var(--ink-2); margin: 0 0 10px;
+        }
+        p { margin: 0 0 14px; max-width: 68ch; }
+
+        /* hero */
+        .hero { padding: 80px 0 64px; }
+        .hero-inner { display: flex; gap: 40px; align-items: center; }
+        .hero h1 { font-size: 44px; font-weight: 600; line-height: 1.15; margin: 0 0 10px; }
+        .hero .tagline { font-size: 21px; color: var(--ink-2); margin-bottom: 24px; }
+        .hero img {
+            width: 180px; height: 180px; object-fit: cover; border-radius: 50%;
+            border: 1px solid var(--line); flex-shrink: 0;
+        }
+        .btn {
+            display: inline-block; font-family: "IBM Plex Sans", system-ui, sans-serif;
+            font-size: 15px; padding: 9px 16px; border-radius: 6px;
+            border: 1px solid var(--accent); color: var(--accent); margin: 0 8px 8px 0;
+        }
+        .btn.primary { background: var(--accent); color: #fff; }
+        .btn:hover { text-decoration: none; background: var(--accent-soft); }
+        .btn.primary:hover { background: var(--accent); opacity: .9; }
+        .btn.disabled { opacity: .5; pointer-events: none; }
+
+        /* cards */
+        .card {
+            background: var(--surface); border: 1px solid var(--line);
+            border-radius: 8px; padding: 22px 24px; margin-bottom: 16px;
+        }
+        .card.solo { border-left: 4px solid var(--accent); }
+        .paper-list { list-style: none; padding: 0; margin: 0; }
+        .paper-list li { padding: 12px 0; border-bottom: 1px solid var(--line); max-width: 72ch; }
+        .paper-list li:last-child { border-bottom: none; }
+
+        /* timeline */
+        .timeline { list-style: none; padding: 0; margin: 0; }
+        .timeline li {
+            display: grid; grid-template-columns: 130px 1fr; gap: 20px;
+            padding: 16px 0; border-bottom: 1px solid var(--line);
+        }
+        .timeline li:last-child { border-bottom: none; }
+        .timeline .when { font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: 15px; color: var(--ink-2); padding-top: 3px; }
+        .timeline .what strong { display: block; }
+        .timeline .what span { color: var(--ink-2); }
+
+        /* footer */
+        footer {
+            font-family: "IBM Plex Sans", system-ui, sans-serif; font-size: 15px;
+            color: var(--ink-2); padding: 32px 24px 48px; text-align: center;
+        }
+        footer a { margin: 0 8px; }
+
+        @media (max-width: 640px) {
+            body { font-size: 17px; }
+            .hero-inner { flex-direction: column-reverse; align-items: flex-start; }
+            .hero h1 { font-size: 34px; }
+            .timeline li { grid-template-columns: 1fr; gap: 4px; }
+            section { padding: 48px 0; }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1><a href="index.html">Youngbin (Ben) Kim</a></h1>
-        <nav>
-            <a href="index.html" class="active">Home</a>
-            <a href="research.html">Research</a>
-            <a href="teaching.html">Teaching</a>
-            <a href="CV_updates-8.pdf">CV</a>
-            <a href="https://scholar.google.com/citations?user=KzF5Jy8AAAAJ&hl=ko&authuser=1">Google Scholar</a>
-            <a href="http://www.linkedin.com/in/benyoungbin">LinkedIn</a>
-            <a href="https://orcid.org/0009-0001-3586-8358">ORCID</a>
-            <a href="https://polisci.ucmerced.edu/content/youngbin-ben-kim">UC Merced</a>
-        </nav>
-    </header>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a class="brand" href="#top">Youngbin (Ben) Kim</a>
+            <div class="links">
+                <a href="#about">About</a>
+                <a href="#research">Research</a>
+                <a href="#teaching">Teaching</a>
+                <a href="#background">Background</a>
+                <a href="CV_updates-8.pdf">CV</a>
+                <button class="toggle" id="themeToggle" aria-label="Toggle dark mode">Dark</button>
+            </div>
+        </div>
+    </nav>
 
-    <main>
-        <section class="container">
-            <div class="pic">
+    <main id="top">
+        <section class="hero">
+            <div class="wrap hero-inner">
+                <div>
+                    <h1>Youngbin (Ben) Kim</h1>
+                    <p class="tagline">Ph.D. Candidate in Political Science, UC Merced</p>
+                    <p>I study how historical trauma and victimhood narratives shape political behavior, from voting within nations to international land disputes.</p>
+                    <a class="btn primary" href="#research">Research</a>
+                    <a class="btn" href="CV_updates-8.pdf">Curriculum Vitae</a>
+                </div>
                 <img src="profile.png" alt="Youngbin Kim">
             </div>
-            <div class="bio">
-                              <p>I am a Ph.D. candidate in Political Science at <a href="https://www.ucmerced.edu/" class="accent">UC Merced</a>, where I study how historical trauma and victimhood narratives shape political behavior. My work spans from voting behavior within nations to international land disputes.</p>
-                <p>My dissertation asks how a single polity remembers more than one historical trauma at once. Drawing on original archival data from South Korea on Japanese colonial forced labor and Korean War civilian killings, it combines spatial analysis of election returns, a nationally representative survey experiment, and an agent-based model of memory transmission. Related projects examine how land claims shape outsider support in conflict and how victimhood narratives drive polarization.</p>
+        </section>
+
+        <section id="about">
+            <div class="wrap">
+                <h2>About</h2>
+                <p>I am a Ph.D. candidate in Political Science at <a href="https://www.ucmerced.edu/">UC Merced</a>, working in political psychology and comparative political behavior. My research asks how societies remember collective trauma, how observers respond to the victimhood claims of others, and what these narratives do to democratic compromise.</p>
+                <p>My dissertation asks how a single polity remembers more than one historical trauma at once. Drawing on original archival data from South Korea on Japanese colonial forced labor and Korean War civilian killings, it combines spatial analysis of election returns, a nationally representative survey experiment, and an agent-based model of memory transmission.</p>
+                <p>I am a native Korean speaker, fluent in English and Japanese, with intermediate Arabic and Hebrew from my time as an exchange student in Israel. Before graduate school I served as a personnel officer in the Republic of Korea Air Force.</p>
+            </div>
+        </section>
+
+        <section id="research">
+            <div class="wrap">
+                <h2>Research</h2>
+
+                <h3>Dissertation</h3>
+                <p class="meta">Not One Story: multiple historical trauma and the politics of remembering</p>
+
+                <div class="card solo">
+                    <h3>Job Market Paper</h3>
+                    <p class="meta">"Not One Story: Multiple Historical Trauma and the Politics of Remembering"</p>
+                    <p>Using an original township-level dataset built from Japanese colonial forced-labor conscription rosters (National Archives of Korea) and Korean War civilian killing records (Truth and Reconciliation Commission of Korea), I harmonize administrative boundaries from 1945 onward and estimate how local exposure to each trauma shapes presidential voting across six elections (2002–2025). The results show that the perpetrator identity of a trauma, rather than its magnitude, determines whether and how it registers politically, and that colonial and wartime traumas leave separable rather than compounding traces.</p>
+                    <a class="btn" href="Kim_JMP_Proposal.pdf">Proposal Draft (PDF)</a>
+                </div>
+
+                <div class="card">
+                    <h3>Survey Experiment</h3>
+                    <p class="meta">Priming colonial, wartime, and layered memory among South Korean adults</p>
+                    <p>To recover the individual-level mechanisms behind the observational findings, I designed a nationally representative survey experiment in South Korea (n = 2,000) that primes colonial memory, wartime memory, or both. The instrument, vignettes, and pre-analysis plan are complete, and the survey is scheduled for fielding in fall 2026.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Memory in Motion</h3>
+                    <p class="meta">"An Agent-Based Model of Trauma, Transmission, and Cleavage Formation"</p>
+                    <p>This chapter formalizes how traumatic memory is transmitted across generations and space, and under what conditions it hardens into a durable political cleavage. The model is calibrated to the empirical estimates from the first two chapters.</p>
+                </div>
+
+                <h3 style="margin-top:40px">Under Review</h3>
+                <ul class="paper-list">
+                    <li>Christopher Ojeda, Youngbin Kim, &amp; Victoria Davis. "Political Ideology and Perceptions of Mental Illness." <em>Perspectives on Politics</em>.</li>
+                    <li>Jingyeong Song, Youngbin Kim, &amp; Awais Khan. "Do Online Petitions Frame Public Perceptions? An Association Rule Mining Analysis on Yemeni Refugees in South Korea." <em>Information Polity</em>.</li>
+                </ul>
+
+                <h3 style="margin-top:40px">Working Papers</h3>
+                <div class="card">
+                    <h3>Empathetic Grounds</h3>
+                    <p class="meta">"How Land Claim Shapes Outsider Support and Justifies Actions in Conflict" (solo-authored)</p>
+                    <p>How does a claim to land shape the support of outside observers for parties in conflict? Study 1, a pre-registered vignette experiment (n = 1,986), finds that a land claim shifts support, perceived legitimacy, and perceived victimhood strongly toward the claimant. Study 2, pre-registered and awaiting fielding, tests whether these effects persist after fact-checking and traces their emotional and behavioral echoes.</p>
+                    <a class="btn disabled" href="#">Draft (Forthcoming)</a>
+                </div>
+                <ul class="paper-list">
+                    <li>Youngbin Kim &amp; Raymond Kim. "Korean Free Economic Zones (KFEZs) and Regional Unemployment: Application of Generalized Synthetic Control."</li>
+                    <li>Youngbin Kim, Christopher Ojeda, &amp; Victoria Davis. "Cross-National Evidence on Ideology and Physical Health Perceptions."</li>
+                    <li>Sung Min Yun, Youngbin Kim, &amp; Shimaa Hanafy. "Military Counterbalancing and State Repression: An Empirical Investigation."</li>
+                </ul>
+
+                <h3 style="margin-top:40px">Peer-Reviewed Publications</h3>
+                <ul class="paper-list">
+                    <li>Youngbin Kim &amp; Seunghoon Paik. (2022). "US-China Strategic Competition and its Implication on the Changes of Threat Perception in Israel-Middle East Diplomatic Relations." <em>Korean Journal of the Middle Eastern Affairs</em>, 21(1), 1–34.</li>
+                    <li>Jingyeong Song, Youngbin Kim, &amp; Seunghoon Paik. (2022). "Migrants as the Threat of Terrorism?: An Analysis on the Korean Perception toward Migrants." <em>Korean Journal of National Defense Studies</em>, 65(1), 85–110.</li>
+                    <li>Youngbin Kim &amp; Seunghoon Paik. (2021). "The Coalition Government in a Multiparty Knesset Democracy in Israel: An Analysis of the Coalition Government of Lapid-Bennett." <em>Korean Journal of the Middle Eastern Affairs</em>, 20(2), 33–66.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="teaching">
+            <div class="wrap">
+                <h2>Teaching</h2>
+
+                <div class="card">
+                    <h3>Instructor of Record</h3>
+                    <p class="meta">Introduction to Comparative Politics (POLI 003), Summer 2026</p>
+                    <p>I designed the syllabus, lecture content, assignments, and course structure for this introductory course at UC Merced.</p>
+                    <a class="btn" href="POLI003_Syllabus_Summer2026.pdf">Syllabus</a>
+                    <a class="btn" href="Weekly_writing_instructions_rubrics.pdf">Weekly Writing Rubric</a>
+                </div>
+
+                <div class="card">
+                    <h3>Computer Lab Instructor</h3>
+                    <p class="meta">Advanced Analysis of Political Data (POLI 175), Fall 2025, Fall 2026</p>
+                    <p>I design and run the computer lab for the department's advanced quantitative methods course. Each week or biweekly, students work through self-guided R materials I wrote, building from data import and cleaning through visualization to coding OLS regression from the ground up. The lab concludes with students presenting an original research question analyzed with observational data.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Teaching Assistant</h3>
+                    <ul class="paper-list">
+                        <li>Political Behavior Around the World, Spring 2025</li>
+                        <li>Introduction to American Politics, Fall 2023, Fall 2024</li>
+                        <li>Voting Behavior, Campaigns, and Elections, Spring 2024</li>
+                        <li>Authoritarian Politics, Spring 2023</li>
+                        <li>Causes of International Conflict, Fall 2022</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="background">
+            <div class="wrap">
+                <h2>Background</h2>
+                <ul class="timeline">
+                    <li><div class="when">2022 – present</div><div class="what"><strong>Ph.D. Candidate, Political Science</strong><span>University of California, Merced. M.A. 2025. Political Science Lab Manager, 2024–2026.</span></div></li>
+                    <li><div class="when">2020 – 2022</div><div class="what"><strong>M.A., Political Science</strong><span>Hankuk University of Foreign Studies, Seoul. Middle East and North African politics.</span></div></li>
+                    <li><div class="when">2018 – 2020</div><div class="what"><strong>Assistant Manager, Corporate Sales</strong><span>Hanatour Inc., Seoul.</span></div></li>
+                    <li><div class="when">2014 – 2017</div><div class="what"><strong>Officer-in-Charge, Personnel Section (1st Lt.)</strong><span>Republic of Korea Air Force.</span></div></li>
+                    <li><div class="when">2010 – 2014</div><div class="what"><strong>B.S., Interdisciplinary Studies in Social Science</strong><span>Hankuk University of Foreign Studies. Exchange student at Reichman University, Herzliya, Israel, 2012–2013.</span></div></li>
+                </ul>
             </div>
         </section>
     </main>
+
+    <footer>
+        <div><a href="mailto:ykim267@ucmerced.edu">ykim267@ucmerced.edu</a></div>
+        <div style="margin-top:8px">
+            <a href="https://scholar.google.com/citations?user=KzF5Jy8AAAAJ">Google Scholar</a>
+            <a href="http://www.linkedin.com/in/benyoungbin">LinkedIn</a>
+            <a href="https://orcid.org/0009-0001-3586-8358">ORCID</a>
+            <a href="https://polisci.ucmerced.edu/content/youngbin-ben-kim">UC Merced</a>
+        </div>
+        <div style="margin-top:16px">© 2026 Youngbin Kim</div>
+    </footer>
+
+    <script>
+        (function () {
+            var root = document.documentElement;
+            var btn = document.getElementById('themeToggle');
+            var saved = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            function apply(theme) {
+                root.setAttribute('data-theme', theme);
+                btn.textContent = theme === 'dark' ? 'Light' : 'Dark';
+            }
+            apply(saved || (prefersDark ? 'dark' : 'light'));
+            btn.addEventListener('click', function () {
+                var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                localStorage.setItem('theme', next);
+                apply(next);
+            });
+        })();
+    </script>
 </body>
 </html>
