@@ -83,13 +83,14 @@
             font-family: "IBM Plex Sans", system-ui, sans-serif;
             font-size: 15px; color: var(--ink-2); margin: 0 0 10px;
         }
-        p { margin: 0 0 14px; max-width: 68ch; }
+         p { margin: 0 0 14px; text-align: justify; hyphens: auto; }
 
         /* hero */
         .hero { padding: 80px 0 64px; }
         .hero-inner { display: flex; gap: 40px; align-items: center; }
         .hero h1 { font-size: 44px; font-weight: 600; line-height: 1.15; margin: 0 0 10px; }
         .hero .tagline { font-size: 21px; color: var(--ink-2); margin-bottom: 24px; }
+        .hero p, .meta { text-align: left; hyphens: manual; }
         .hero img {
             width: 180px; height: 180px; object-fit: cover; border-radius: 50%;
             border: 1px solid var(--line); flex-shrink: 0;
@@ -111,7 +112,7 @@
         }
         .card.solo { border-left: 4px solid var(--accent); }
         .paper-list { list-style: none; padding: 0; margin: 0; }
-        .paper-list li { padding: 12px 0; border-bottom: 1px solid var(--line); max-width: 72ch; }
+        .paper-list li { padding: 12px 0; border-bottom: 1px solid var(--line); text-align: justify; hyphens: auto; }
         .paper-list li:last-child { border-bottom: none; }
 
         /* timeline */
